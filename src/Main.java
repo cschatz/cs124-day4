@@ -1,4 +1,17 @@
 class Main {
+	
+	// Warmup Day 4
+//	  Node n1 = new Node("A");
+//	  Node n2 = new Node("B");
+//	  Node n3 = new Node("C", n1);
+//	  n1.next = n2;
+//	  Node head = n3;
+//	  show(head);
+//	  n3.next = n2; // remove the "A" node
+//	  show(head);
+//	  head = head.next; // remove "C" node
+//	  show(head);
+//	  
 
   static public int find(String[] items, String target) {
 
@@ -50,12 +63,32 @@ class Main {
     System.out.println();
   }
 
+  // Question 6
+  static public Node insertBefore(Node head, String item, String target) {
+	  // make the new node
+	  Node injection = new Node(item);
+	  
+	  // special case: no list!
+	  if (head == null)
+		  return head;
+	  
+	  // special case: need to insert at front
+	  if (target.equals(head.element)) {
+		  injection.next = head;
+		  head = injection;
+	  }
+	  
+	  return head;
+  }
+  
   public static void main(String[] args) {
     // String[] things = { "tree", "fish", "car", "mouse", "pen" };
     // show(things);
     // String removed = removeFirst(things);
     // System.out.println("Removed: " + removed);
     // show(things);
+	  
+	// Linked List exercises
 
     Node a = new Node("apple");
     Node b = new Node("banana");
@@ -80,8 +113,24 @@ class Main {
     show(head);
     
     // Question 4
+    // change the next of the "apple" node to point to the "blueberry" node
+    a.next = a.next.next;
+    show(head);
+    
+    // Question 5
+    // create a new node, with its next pointing to the "apple" node
+    Node first = new Node("first!", a);
+    // make head point to the new node
+    head = first;
+    // ** The two lines above can be done in one line:
+    // head = new Node("first!", a);
+    show(head);
+    
+    // Question 6
+    head = insertBefore(head, "haha!", "first!");
+    show(head);
+	  
   }
-
 
   
 
