@@ -95,6 +95,30 @@ class Main {
 	  return head;
   }
   
+  static public Node remove(Node head, String item) {
+	  // special case: empty list!
+	  if (head == null)
+		  return head;
+	  
+	  // special case: item is the first item
+	  if (head.element.equals(item)) {
+		  head = head.next;
+		  return head;
+	  }
+	  
+	  Node current = head;
+	  while (current.next != null) {
+		  if (current.next.element.equals(item)) {
+			  // do the removal
+			  current.next = current.next.next;
+			  break;
+		  }
+		  current = current.next;
+	  }
+	  
+	  return head;
+  }
+  
   public static void main(String[] args) {
     // String[] things = { "tree", "fish", "car", "mouse", "pen" };
     // show(things);
@@ -144,6 +168,13 @@ class Main {
     head = insertBefore(head, "haha!", "first!");
     show(head);
     head = insertBefore(head, "kiwi", "cherry");
+	show(head);
+	
+	// Question 7
+	head = remove(head, "blueberry");
+	show(head);
+	head = remove(head, "haha!");
+	head = remove(head, "cherry");
 	show(head);
   }
 
