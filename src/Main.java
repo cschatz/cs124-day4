@@ -76,8 +76,20 @@ class Main {
 	  if (target.equals(head.element)) {
 		  injection.next = head;
 		  head = injection;
+		  return head;
 	  }
 	  
+	  // search the rest of the list
+	  Node current = head;
+	  while (current.next != null) {
+		  if (target.equals(current.next.element)) {
+			  // do the insertion
+			  injection.next = current.next;
+			  current.next = injection;
+			  break;
+		  }
+		  current = current.next;
+	  }
 	  
 	  
 	  return head;
@@ -131,7 +143,8 @@ class Main {
     // Question 6
     head = insertBefore(head, "haha!", "first!");
     show(head);
-	  
+    head = insertBefore(head, "kiwi", "cherry");
+	show(head);
   }
 
   
